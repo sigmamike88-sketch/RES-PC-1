@@ -15347,7 +15347,7 @@
               <span class="dot">·</span>
               ${exam.year}
               <span class="dot">·</span>
-              RESPIRATORY PLACEHOLDER
+              ${escapeHtml(exam.topic.toUpperCase())}
             </div>
             <div class="quiz-title">${escapeHtml(exam.title)}</div>
             <div class="quiz-section">${escapeHtml(exam.section || "")}</div>
