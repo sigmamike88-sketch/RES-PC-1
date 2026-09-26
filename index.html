@@ -992,8 +992,8 @@
 
     <script>
       /* =====================================================================
-                         NOTES DATA — RESPIRATORY MODULE
-                         ===================================================================== */
+                             NOTES DATA — RESPIRATORY MODULE
+                             ===================================================================== */
       const NOTES_DATA = [
         {
           id: "anatomy",
@@ -1053,8 +1053,8 @@
         },
       ];
       /* =====================================================================
-                   PPTS DATA — RESPIRATORY MODULE
-                   ===================================================================== */
+                       PPTS DATA — RESPIRATORY MODULE
+                       ===================================================================== */
       const PPTS_DATA = [
         {
           id: "2017",
@@ -1556,61 +1556,61 @@
       ];
 
       /* =====================================================================
-                   PPTS — SUBJECTS LIST  (matches CVS site style)
-                   ===================================================================== */
+                       PPTS — SUBJECTS LIST  (matches CVS site style)
+                       ===================================================================== */
       function renderPptsCourses() {
         app.innerHTML = `
-                    <header class="topbar">
-                      <div class="logo-wrap">
-                        <button class="icon-btn" id="backFromPpts" title="Back" style="margin-right:4px;">
-                          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-                        </button>
-                        <div class="logo-badge" style="background:linear-gradient(135deg,#f5b800,#ff6d00);">📊</div>
-                        <div>
-                          <div class="logo-text">PPTs</div>
-                          <div class="logo-sub">${PPTS_DATA.length} subjects</div>
-                        </div>
-                      </div>
-                    </header>
-
-                    <div class="crumbs">
-                      <span class="crumb link" data-crumb-ppts="courses">Courses</span>
-                      <span class="crumb-sep">›</span>
-                      <span class="crumb current">PPTs</span>
-                    </div>
-
-                    <div class="section-title">
-                      Subjects
-                      <span class="count">${PPTS_DATA.length}</span>
-                    </div>
-
-                    <div class="list">
-                      ${PPTS_DATA.map((sub) => {
-                        const style = getCourseStyle(sub.subject);
-                        const fileCount = (
-                          sub.sections ||
-                          (sub.groups
-                            ? sub.groups.flatMap((g) => g.sections)
-                            : [])
-                        ).reduce((t, sec) => t + sec.files.length, 0);
-                        return `
-                          <button class="course-card" data-ppt-subject="${escapeHtml(sub.id)}"
-                            style="--course-color:${style.color};--course-color-2:${style.color2};--course-bg:${style.bg};--course-border:${style.border};">
-                            <div class="course-thumb" style="background:${style.bg};border-color:${style.border};">${sub.icon || style.icon}</div>
-                            <div class="course-body">
-                              <div class="course-title">${escapeHtml(sub.subject)}</div>
-                              <div class="course-meta">
-                                ${(sub.sections || (sub.groups ? sub.groups.flatMap((g) => g.sections) : [])).length} ${(sub.sections || (sub.groups ? sub.groups.flatMap((g) => g.sections) : [])).length === 1 ? "section" : "sections"}
-                                <span class="dot">·</span>
-                                ${fileCount} ${fileCount === 1 ? "file" : "files"}
-                              </div>
+                        <header class="topbar">
+                          <div class="logo-wrap">
+                            <button class="icon-btn" id="backFromPpts" title="Back" style="margin-right:4px;">
+                              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                            </button>
+                            <div class="logo-badge" style="background:linear-gradient(135deg,#f5b800,#ff6d00);">📊</div>
+                            <div>
+                              <div class="logo-text">PPTs</div>
+                              <div class="logo-sub">${PPTS_DATA.length} subjects</div>
                             </div>
-                            <svg class="course-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 18l6-6-6-6"/></svg>
-                          </button>
-                        `;
-                      }).join("")}
-                    </div>
-                  `;
+                          </div>
+                        </header>
+
+                        <div class="crumbs">
+                          <span class="crumb link" data-crumb-ppts="courses">Courses</span>
+                          <span class="crumb-sep">›</span>
+                          <span class="crumb current">PPTs</span>
+                        </div>
+
+                        <div class="section-title">
+                          Subjects
+                          <span class="count">${PPTS_DATA.length}</span>
+                        </div>
+
+                        <div class="list">
+                          ${PPTS_DATA.map((sub) => {
+                            const style = getCourseStyle(sub.subject);
+                            const fileCount = (
+                              sub.sections ||
+                              (sub.groups
+                                ? sub.groups.flatMap((g) => g.sections)
+                                : [])
+                            ).reduce((t, sec) => t + sec.files.length, 0);
+                            return `
+                              <button class="course-card" data-ppt-subject="${escapeHtml(sub.id)}"
+                                style="--course-color:${style.color};--course-color-2:${style.color2};--course-bg:${style.bg};--course-border:${style.border};">
+                                <div class="course-thumb" style="background:${style.bg};border-color:${style.border};">${sub.icon || style.icon}</div>
+                                <div class="course-body">
+                                  <div class="course-title">${escapeHtml(sub.subject)}</div>
+                                  <div class="course-meta">
+                                    ${(sub.sections || (sub.groups ? sub.groups.flatMap((g) => g.sections) : [])).length} ${(sub.sections || (sub.groups ? sub.groups.flatMap((g) => g.sections) : [])).length === 1 ? "section" : "sections"}
+                                    <span class="dot">·</span>
+                                    ${fileCount} ${fileCount === 1 ? "file" : "files"}
+                                  </div>
+                                </div>
+                                <svg class="course-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 18l6-6-6-6"/></svg>
+                              </button>
+                            `;
+                          }).join("")}
+                        </div>
+                      `;
 
         document
           .getElementById("backFromPpts")
@@ -1636,8 +1636,8 @@
         });
       }
       /* =====================================================================
-                   PPTS — SECTIONS LIST (was "teachers")
-                   ===================================================================== */
+                       PPTS — SECTIONS LIST (was "teachers")
+                       ===================================================================== */
       function renderPptsTeachers() {
         const subjectData = PPTS_DATA.find((s) => s.id === state.pptSubject);
         if (!subjectData) {
@@ -1649,59 +1649,59 @@
         // ---- If the subject uses "groups", show subject group list first ----
         if (subjectData.groups && !state.pptTeacher) {
           app.innerHTML = `
-                <header class="topbar">
-                  <div class="logo-wrap">
-                    <button class="icon-btn" id="backToPptsSubjects" title="Back" style="margin-right:4px;">
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-                    </button>
-                    <div class="logo-badge" style="background:linear-gradient(135deg,${style.color},${style.color2});">${subjectData.icon || style.icon}</div>
-                    <div>
-                      <div class="logo-text">${escapeHtml(subjectData.subject)}</div>
-                      <div class="logo-sub">${subjectData.groups.length} subjects</div>
-                    </div>
-                  </div>
-                </header>
-
-                <div class="crumbs">
-                  <span class="crumb link" data-crumb-ppts="courses">Courses</span>
-                  <span class="crumb-sep">›</span>
-                  <span class="crumb link" data-crumb-ppts="ppts">PPTs</span>
-                  <span class="crumb-sep">›</span>
-                  <span class="crumb current">${escapeHtml(subjectData.subject)}</span>
-                </div>
-
-                <div class="section-title">
-                  Subjects
-                  <span class="count">${subjectData.groups.length}</span>
-                </div>
-
-                <div class="list">
-                  ${subjectData.groups
-                    .map((grp) => {
-                      const fileCount = grp.sections.reduce(
-                        (t, s) => t + s.files.length,
-                        0,
-                      );
-                      const gStyle = getCourseStyle(grp.name);
-                      return `
-                      <button class="course-card" data-ppt-group="${escapeHtml(grp.name)}"
-                        style="--course-color:${gStyle.color};--course-color-2:${gStyle.color2};--course-bg:${gStyle.bg};--course-border:${gStyle.border};">
-                        <div class="course-thumb" style="background:${gStyle.bg};border-color:${gStyle.border};">${grp.icon || gStyle.icon}</div>
-                        <div class="course-body">
-                          <div class="course-title">${escapeHtml(grp.name)}</div>
-                          <div class="course-meta">
-                            ${grp.sections.length} ${grp.sections.length === 1 ? "teacher" : "teachers"}
-                            <span class="dot">·</span>
-                            ${fileCount} ${fileCount === 1 ? "file" : "files"}
-                          </div>
+                    <header class="topbar">
+                      <div class="logo-wrap">
+                        <button class="icon-btn" id="backToPptsSubjects" title="Back" style="margin-right:4px;">
+                          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                        </button>
+                        <div class="logo-badge" style="background:linear-gradient(135deg,${style.color},${style.color2});">${subjectData.icon || style.icon}</div>
+                        <div>
+                          <div class="logo-text">${escapeHtml(subjectData.subject)}</div>
+                          <div class="logo-sub">${subjectData.groups.length} subjects</div>
                         </div>
-                        <svg class="course-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 18l6-6-6-6"/></svg>
-                      </button>
-                    `;
-                    })
-                    .join("")}
-                </div>
-              `;
+                      </div>
+                    </header>
+
+                    <div class="crumbs">
+                      <span class="crumb link" data-crumb-ppts="courses">Courses</span>
+                      <span class="crumb-sep">›</span>
+                      <span class="crumb link" data-crumb-ppts="ppts">PPTs</span>
+                      <span class="crumb-sep">›</span>
+                      <span class="crumb current">${escapeHtml(subjectData.subject)}</span>
+                    </div>
+
+                    <div class="section-title">
+                      Subjects
+                      <span class="count">${subjectData.groups.length}</span>
+                    </div>
+
+                    <div class="list">
+                      ${subjectData.groups
+                        .map((grp) => {
+                          const fileCount = grp.sections.reduce(
+                            (t, s) => t + s.files.length,
+                            0,
+                          );
+                          const gStyle = getCourseStyle(grp.name);
+                          return `
+                          <button class="course-card" data-ppt-group="${escapeHtml(grp.name)}"
+                            style="--course-color:${gStyle.color};--course-color-2:${gStyle.color2};--course-bg:${gStyle.bg};--course-border:${gStyle.border};">
+                            <div class="course-thumb" style="background:${gStyle.bg};border-color:${gStyle.border};">${grp.icon || gStyle.icon}</div>
+                            <div class="course-body">
+                              <div class="course-title">${escapeHtml(grp.name)}</div>
+                              <div class="course-meta">
+                                ${grp.sections.length} ${grp.sections.length === 1 ? "teacher" : "teachers"}
+                                <span class="dot">·</span>
+                                ${fileCount} ${fileCount === 1 ? "file" : "files"}
+                              </div>
+                            </div>
+                            <svg class="course-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 18l6-6-6-6"/></svg>
+                          </button>
+                        `;
+                        })
+                        .join("")}
+                    </div>
+                  `;
 
           document
             .getElementById("backToPptsSubjects")
@@ -1748,52 +1748,52 @@
           const gStyle = getCourseStyle(grp.name);
 
           app.innerHTML = `
-                <header class="topbar">
-                  <div class="logo-wrap">
-                    <button class="icon-btn" id="backToPptsGroups" title="Back" style="margin-right:4px;">
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-                    </button>
-                    <div class="logo-badge" style="background:linear-gradient(135deg,${gStyle.color},${gStyle.color2});">${grp.icon || gStyle.icon}</div>
-                    <div>
-                      <div class="logo-text">${escapeHtml(grp.name)}</div>
-                      <div class="logo-sub">${grp.sections.length} ${grp.sections.length === 1 ? "teacher" : "teachers"}</div>
-                    </div>
-                  </div>
-                </header>
-
-                <div class="crumbs">
-                  <span class="crumb link" data-crumb-ppts="courses">Courses</span>
-                  <span class="crumb-sep">›</span>
-                  <span class="crumb link" data-crumb-ppts="ppts">PPTs</span>
-                  <span class="crumb-sep">›</span>
-                  <span class="crumb link" data-crumb-ppts="teachers">${escapeHtml(subjectData.subject)}</span>
-                  <span class="crumb-sep">›</span>
-                  <span class="crumb current">${escapeHtml(grp.name)}</span>
-                </div>
-
-                <div class="section-title">
-                  Teachers
-                  <span class="count">${grp.sections.length}</span>
-                </div>
-
-                <div class="list">
-                  ${grp.sections
-                    .map(
-                      (sec) => `
-                    <button class="course-card" data-ppt-section="${escapeHtml(sec.name)}"
-                      style="--course-color:${gStyle.color};--course-color-2:${gStyle.color2};--course-bg:${gStyle.bg};--course-border:${gStyle.border};">
-                      <div class="course-thumb" style="background:${gStyle.bg};border-color:${gStyle.border};">${sec.icon || "👨‍🏫"}</div>
-                      <div class="course-body">
-                        <div class="course-title">${escapeHtml(sec.name)}</div>
-                        <div class="course-meta">${sec.files.length} ${sec.files.length === 1 ? "file" : "files"}</div>
+                    <header class="topbar">
+                      <div class="logo-wrap">
+                        <button class="icon-btn" id="backToPptsGroups" title="Back" style="margin-right:4px;">
+                          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                        </button>
+                        <div class="logo-badge" style="background:linear-gradient(135deg,${gStyle.color},${gStyle.color2});">${grp.icon || gStyle.icon}</div>
+                        <div>
+                          <div class="logo-text">${escapeHtml(grp.name)}</div>
+                          <div class="logo-sub">${grp.sections.length} ${grp.sections.length === 1 ? "teacher" : "teachers"}</div>
+                        </div>
                       </div>
-                      <svg class="course-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 18l6-6-6-6"/></svg>
-                    </button>
-                  `,
-                    )
-                    .join("")}
-                </div>
-              `;
+                    </header>
+
+                    <div class="crumbs">
+                      <span class="crumb link" data-crumb-ppts="courses">Courses</span>
+                      <span class="crumb-sep">›</span>
+                      <span class="crumb link" data-crumb-ppts="ppts">PPTs</span>
+                      <span class="crumb-sep">›</span>
+                      <span class="crumb link" data-crumb-ppts="teachers">${escapeHtml(subjectData.subject)}</span>
+                      <span class="crumb-sep">›</span>
+                      <span class="crumb current">${escapeHtml(grp.name)}</span>
+                    </div>
+
+                    <div class="section-title">
+                      Teachers
+                      <span class="count">${grp.sections.length}</span>
+                    </div>
+
+                    <div class="list">
+                      ${grp.sections
+                        .map(
+                          (sec) => `
+                        <button class="course-card" data-ppt-section="${escapeHtml(sec.name)}"
+                          style="--course-color:${gStyle.color};--course-color-2:${gStyle.color2};--course-bg:${gStyle.bg};--course-border:${gStyle.border};">
+                          <div class="course-thumb" style="background:${gStyle.bg};border-color:${gStyle.border};">${sec.icon || "👨‍🏫"}</div>
+                          <div class="course-body">
+                            <div class="course-title">${escapeHtml(sec.name)}</div>
+                            <div class="course-meta">${sec.files.length} ${sec.files.length === 1 ? "file" : "files"}</div>
+                          </div>
+                          <svg class="course-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 18l6-6-6-6"/></svg>
+                        </button>
+                      `,
+                        )
+                        .join("")}
+                    </div>
+                  `;
 
           document
             .getElementById("backToPptsGroups")
@@ -1833,50 +1833,50 @@
 
         // ---- Fallback: flat subject (no groups) - show sections directly ----
         app.innerHTML = `
-              <header class="topbar">
-                <div class="logo-wrap">
-                  <button class="icon-btn" id="backToPptsSubjects" title="Back" style="margin-right:4px;">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-                  </button>
-                  <div class="logo-badge" style="background:linear-gradient(135deg,${style.color},${style.color2});">${subjectData.icon || style.icon}</div>
-                  <div>
-                    <div class="logo-text">${escapeHtml(subjectData.subject)}</div>
-                    <div class="logo-sub">${subjectData.sections.length} ${subjectData.sections.length === 1 ? "section" : "sections"}</div>
-                  </div>
-                </div>
-              </header>
-
-              <div class="crumbs">
-                <span class="crumb link" data-crumb-ppts="courses">Courses</span>
-                <span class="crumb-sep">›</span>
-                <span class="crumb link" data-crumb-ppts="ppts">PPTs</span>
-                <span class="crumb-sep">›</span>
-                <span class="crumb current">${escapeHtml(subjectData.subject)}</span>
-              </div>
-
-              <div class="section-title">
-                Sections
-                <span class="count">${subjectData.sections.length}</span>
-              </div>
-
-              <div class="list">
-                ${subjectData.sections
-                  .map(
-                    (sec) => `
-                  <button class="course-card" data-ppt-section="${escapeHtml(sec.name)}"
-                    style="--course-color:${style.color};--course-color-2:${style.color2};--course-bg:${style.bg};--course-border:${style.border};">
-                    <div class="course-thumb" style="background:${style.bg};border-color:${style.border};">${sec.icon || "📄"}</div>
-                    <div class="course-body">
-                      <div class="course-title">${escapeHtml(sec.name)}</div>
-                      <div class="course-meta">${sec.files.length} ${sec.files.length === 1 ? "file" : "files"}</div>
+                  <header class="topbar">
+                    <div class="logo-wrap">
+                      <button class="icon-btn" id="backToPptsSubjects" title="Back" style="margin-right:4px;">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                      </button>
+                      <div class="logo-badge" style="background:linear-gradient(135deg,${style.color},${style.color2});">${subjectData.icon || style.icon}</div>
+                      <div>
+                        <div class="logo-text">${escapeHtml(subjectData.subject)}</div>
+                        <div class="logo-sub">${subjectData.sections.length} ${subjectData.sections.length === 1 ? "section" : "sections"}</div>
+                      </div>
                     </div>
-                    <svg class="course-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 18l6-6-6-6"/></svg>
-                  </button>
-                `,
-                  )
-                  .join("")}
-              </div>
-            `;
+                  </header>
+
+                  <div class="crumbs">
+                    <span class="crumb link" data-crumb-ppts="courses">Courses</span>
+                    <span class="crumb-sep">›</span>
+                    <span class="crumb link" data-crumb-ppts="ppts">PPTs</span>
+                    <span class="crumb-sep">›</span>
+                    <span class="crumb current">${escapeHtml(subjectData.subject)}</span>
+                  </div>
+
+                  <div class="section-title">
+                    Sections
+                    <span class="count">${subjectData.sections.length}</span>
+                  </div>
+
+                  <div class="list">
+                    ${subjectData.sections
+                      .map(
+                        (sec) => `
+                      <button class="course-card" data-ppt-section="${escapeHtml(sec.name)}"
+                        style="--course-color:${style.color};--course-color-2:${style.color2};--course-bg:${style.bg};--course-border:${style.border};">
+                        <div class="course-thumb" style="background:${style.bg};border-color:${style.border};">${sec.icon || "📄"}</div>
+                        <div class="course-body">
+                          <div class="course-title">${escapeHtml(sec.name)}</div>
+                          <div class="course-meta">${sec.files.length} ${sec.files.length === 1 ? "file" : "files"}</div>
+                        </div>
+                        <svg class="course-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 18l6-6-6-6"/></svg>
+                      </button>
+                    `,
+                      )
+                      .join("")}
+                  </div>
+                `;
 
         document
           .getElementById("backToPptsSubjects")
@@ -1911,8 +1911,8 @@
         });
       }
       /* =====================================================================
-                   PPTS — FILES LIST
-                   ===================================================================== */
+                       PPTS — FILES LIST
+                       ===================================================================== */
       function renderPptsFiles() {
         const subjectData = PPTS_DATA.find((s) => s.id === state.pptSubject);
         if (!subjectData) {
@@ -1944,54 +1944,54 @@
         const style = getCourseStyle(subjectData.subject);
 
         app.innerHTML = `
-    <header class="topbar">
-      <div class="logo-wrap">
-        <button class="icon-btn" id="backToPptsSections" title="Back" style="margin-right:4px;">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-        </button>
-        <div class="logo-badge" style="background:linear-gradient(135deg,${style.color},${style.color2});">${section.icon || "📄"}</div>
-        <div>
-          <div class="logo-text">${escapeHtml(section.name)}</div>
-          <div class="logo-sub">${section.files.length} ${section.files.length === 1 ? "file" : "files"}</div>
-        </div>
-      </div>
-    </header>
-
-    <div class="crumbs">
-      <span class="crumb link" data-crumb-ppts="courses">Courses</span>
-      <span class="crumb-sep">›</span>
-      <span class="crumb link" data-crumb-ppts="ppts">PPTs</span>
-      <span class="crumb-sep">›</span>
-      <span class="crumb current">${escapeHtml(subjectData.subject)}</span>
-    </div>
-
-    <div class="section-title">
-      Files
-      <span class="count">${section.files.length}</span>
-    </div>
-
-    <div class="list">
-      ${section.files
-        .map(
-          (f) => `
-        <a class="course-card" href="${escapeHtml(f.file)}" target="_blank" rel="noopener"
-          style="--course-color:${style.color};--course-color-2:${style.color2};--course-bg:${style.bg};--course-border:${style.border};text-decoration:none;color:inherit;">
-          <div class="course-thumb" style="background:${style.bg};border-color:${style.border};">📄</div>
-          <div class="course-body">
-            <div class="course-title" style="font-size:15px;">${escapeHtml(f.title)}</div>
-            <div class="course-meta">
-              <span style="color:${style.color};font-weight:700;">PDF</span>
-              <span class="dot">·</span>
-              <span>Tap to open</span>
+        <header class="topbar">
+          <div class="logo-wrap">
+            <button class="icon-btn" id="backToPptsSections" title="Back" style="margin-right:4px;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            </button>
+            <div class="logo-badge" style="background:linear-gradient(135deg,${style.color},${style.color2});">${section.icon || "📄"}</div>
+            <div>
+              <div class="logo-text">${escapeHtml(section.name)}</div>
+              <div class="logo-sub">${section.files.length} ${section.files.length === 1 ? "file" : "files"}</div>
             </div>
           </div>
-          <svg class="course-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 18l6-6-6-6"/></svg>
-        </a>
-      `,
-        )
-        .join("")}
-    </div>
-  `;
+        </header>
+
+        <div class="crumbs">
+          <span class="crumb link" data-crumb-ppts="courses">Courses</span>
+          <span class="crumb-sep">›</span>
+          <span class="crumb link" data-crumb-ppts="ppts">PPTs</span>
+          <span class="crumb-sep">›</span>
+          <span class="crumb current">${escapeHtml(subjectData.subject)}</span>
+        </div>
+
+        <div class="section-title">
+          Files
+          <span class="count">${section.files.length}</span>
+        </div>
+
+        <div class="list">
+          ${section.files
+            .map(
+              (f) => `
+            <a class="course-card" href="${escapeHtml(f.file)}" target="_blank" rel="noopener"
+              style="--course-color:${style.color};--course-color-2:${style.color2};--course-bg:${style.bg};--course-border:${style.border};text-decoration:none;color:inherit;">
+              <div class="course-thumb" style="background:${style.bg};border-color:${style.border};">📄</div>
+              <div class="course-body">
+                <div class="course-title" style="font-size:15px;">${escapeHtml(f.title)}</div>
+                <div class="course-meta">
+                  <span style="color:${style.color};font-weight:700;">PDF</span>
+                  <span class="dot">·</span>
+                  <span>Tap to open</span>
+                </div>
+              </div>
+              <svg class="course-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 18l6-6-6-6"/></svg>
+            </a>
+          `,
+            )
+            .join("")}
+        </div>
+      `;
 
         document
           .getElementById("backToPptsSections")
@@ -2019,8 +2019,8 @@
         });
       }
       /* =====================================================================
-                         QUIZ DATA — placeholders (one generic question per subject)
-                         ===================================================================== */
+                             QUIZ DATA — placeholders (one generic question per subject)
+                             ===================================================================== */
       function placeholderQuestions(subject) {
         return [
           {
@@ -2039,8 +2039,8 @@
 
       const QUIZ_DATA = [
         /* =====================================================================
-                                                ANATOMY EXAM AND PRACTICE
-                         ===================================================================== */
+                                                    ANATOMY EXAM AND PRACTICE
+                             ===================================================================== */
         {
           id: "gross-2014",
           subject: "Anatomy",
@@ -15168,8 +15168,8 @@
       const TELEGRAM_URL = "https://t.me/+t_UlN4sHt7FkYWQ0";
 
       /* =====================================================================
-                         COURSE STYLING
-                         ===================================================================== */
+                             COURSE STYLING
+                             ===================================================================== */
       const COURSE_STYLE = {
         Anatomy: {
           icon: "🫀",
@@ -15227,8 +15227,8 @@
       }
 
       /* =====================================================================
-                         STORAGE & STATE
-                         ===================================================================== */
+                             STORAGE & STATE
+                             ===================================================================== */
       const STORAGE_KEY = "resp_module_progress_v1";
       const BOOKMARK_KEY = "resp_bookmarks_v1";
 
@@ -15275,8 +15275,8 @@
       };
 
       /* =====================================================================
-                         HELPERS
-                         ===================================================================== */
+                             HELPERS
+                             ===================================================================== */
       function isBookmarked(examId, qIdx) {
         return !!(state.bookmarks[examId] && state.bookmarks[examId][qIdx]);
       }
@@ -15345,7 +15345,6 @@
       function getTopicsForSubject(subject) {
         // Force topic view for subjects that should have topics
         if (SUBJECTS_WITH_TOPICS.includes(subject)) {
-          // Return all topics defined for this subject (even if only 1 exists now)
           const existingTopics = [
             ...new Set(
               QUIZ_DATA.filter((e) => e.subject === subject).map(
@@ -15353,30 +15352,33 @@
               ),
             ),
           ];
-          // Ensure the standard topics always show — even with no questions yet
           const standardTopics = {
             Anatomy: ["Gross", "Embryo", "Histology"],
           };
           const expected = standardTopics[subject] || [];
-          // Merge existing + expected, keep order from expected
           const merged = [
             ...expected,
             ...existingTopics.filter((t) => !expected.includes(t)),
           ];
           return merged;
         }
-        // For other subjects, only show topics if 2+ exist
-        const topics = [
-          ...new Set(
-            QUIZ_DATA.filter((e) => e.subject === subject).map((e) => e.topic),
-          ),
-        ];
-        return topics.length > 1 ? topics : null;
+        // Only Anatomy uses topics — every other subject goes straight to exams
+        if (subject === "Anatomy") {
+          const topics = [
+            ...new Set(
+              QUIZ_DATA.filter((e) => e.subject === subject).map(
+                (e) => e.topic,
+              ),
+            ),
+          ];
+          return topics.length > 1 ? topics : null;
+        }
+        return null;
       }
 
       /* =====================================================================
-                         RENDER ROUTER
-                         ===================================================================== */
+                   RENDER ROUTER
+                   ===================================================================== */
       function render() {
         if (state.view === "quiz") return renderQuiz();
         if (state.view === "finish") return renderFinish();
@@ -15391,8 +15393,8 @@
       }
 
       /* =====================================================================
-                         COURSES VIEW (home)
-                         ===================================================================== */
+                             COURSES VIEW (home)
+                             ===================================================================== */
       function renderCourses() {
         const courses = getCourses();
         const totalQuestions = QUIZ_DATA.reduce(
@@ -15432,144 +15434,146 @@
         );
 
         app.innerHTML = `
-                          <header class="topbar">
-                            <div class="logo-wrap">
-                              <div class="logo-badge">RES</div>
-                              <div>
-                                <div class="logo-text">RES</div>
-                                <div class="logo-sub">Respiratory Past Year Exams</div>
-                              </div>
-                            </div>
-                            <div style="display:flex;gap:8px;">
-                              <a class="icon-btn" id="telegramBtn" href="${TELEGRAM_URL}" target="_blank" rel="noopener" title="Videos on Telegram" style="text-decoration:none;background:linear-gradient(135deg,#2AABEE,#229ED9);border-color:#2AABEE;color:#fff;box-shadow:0 3px 12px rgba(42,171,238,0.4);">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21.5 3.5L2.5 10.5l5 2 2 6 3.5-4.5 5.5 4 3-14.5z"/></svg>
-                              </a>
-                              <button class="icon-btn" id="resetBtn" title="Reset all progress">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 12a9 9 0 109-9 9.75 9.75 0 00-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
-                              </button>
-                            </div>
-                          </header>
-
-                          <div class="hero">
-                            <div class="hero-title">Respiratory Module 🫁</div>
-                            <div class="hero-sub">${totalQuestions} questions across ${courses.length} courses · ${totalAnswered} answered so far</div>
-                            ${
-                              totalAnswered > 0
-                                ? `
-                              <div style="margin-top:14px;">
-                                <div style="display:flex;justify-content:space-between;font-size:11px;font-weight:700;color:var(--text-dim);margin-bottom:6px;text-transform:uppercase;letter-spacing:0.5px;">
-                                  <span>Overall Progress</span>
-                                  <span>${Math.round((totalAnswered / totalQuestions) * 100)}%</span>
+                              <header class="topbar">
+                                <div class="logo-wrap">
+                                  <div class="logo-badge">RES</div>
+                                  <div>
+                                    <div class="logo-text">RES</div>
+                                    <div class="logo-sub">Respiratory Past Year Exams</div>
+                                  </div>
                                 </div>
-                                <div class="progress-bar" style="height:8px;">
-                                  <div class="progress-fill" style="width:${(totalAnswered / totalQuestions) * 100}%;background:linear-gradient(90deg, var(--accent), var(--accent-2));"></div>
+                                <div style="display:flex;gap:8px;">
+                                  <a class="icon-btn" id="telegramBtn" href="${TELEGRAM_URL}" target="_blank" rel="noopener" title="Videos on Telegram" style="text-decoration:none;background:linear-gradient(135deg,#2AABEE,#229ED9);border-color:#2AABEE;color:#fff;box-shadow:0 3px 12px rgba(42,171,238,0.4);">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21.5 3.5L2.5 10.5l5 2 2 6 3.5-4.5 5.5 4 3-14.5z"/></svg>
+                                  </a>
+                                  <button class="icon-btn" id="resetBtn" title="Reset all progress">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 12a9 9 0 109-9 9.75 9.75 0 00-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+                                  </button>
                                 </div>
+                              </header>
+
+                              <div class="hero">
+                                <div class="hero-title">Respiratory Module 🫁</div>
+                                <div class="hero-sub">${totalQuestions} questions across ${courses.length} courses · ${totalAnswered} answered so far</div>
+                                ${
+                                  totalAnswered > 0
+                                    ? `
+                                  <div style="margin-top:14px;">
+                                    <div style="display:flex;justify-content:space-between;font-size:11px;font-weight:700;color:var(--text-dim);margin-bottom:6px;text-transform:uppercase;letter-spacing:0.5px;">
+                                      <span>Overall Progress</span>
+                                      <span>${Math.round((totalAnswered / totalQuestions) * 100)}%</span>
+                                    </div>
+                                    <div class="progress-bar" style="height:8px;">
+                                      <div class="progress-fill" style="width:${(totalAnswered / totalQuestions) * 100}%;background:linear-gradient(90deg, var(--accent), var(--accent-2));"></div>
+                                    </div>
+                                  </div>
+                                `
+                                    : ""
+                                }
                               </div>
-                            `
-                                : ""
-                            }
-                          </div>
 
-                          <div class="search-wrap">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
-                            <input id="searchInput" type="text" placeholder="Search courses..." value="${escapeHtml(state.search)}" />
-                          </div>
-
-                          ${
-                            continueExam
-                              ? `
-                            <button class="continue-card" data-continue="${continueExam.id}">
-                              <div class="continue-icon">${continueExam.icon || "📘"}</div>
-                              <div class="continue-body">
-                                <div class="continue-label">Continue</div>
-                                <div class="continue-title">${escapeHtml(continueExam.title)}</div>
-                                <div class="continue-meta">${Object.keys(state.progress[continueExam.id] || {}).length} / ${continueExam.questions.length} answered</div>
+                              <div class="search-wrap">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+                                <input id="searchInput" type="text" placeholder="Search courses..." value="${escapeHtml(state.search)}" />
                               </div>
-                              <svg class="course-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 18l6-6-6-6"/></svg>
-                            </button>
-                          `
-                              : ""
-                          }
 
-                          ${
-                            bookmarkCount > 0
-                              ? `
-                            <div class="section-title" style="margin-top:8px;">
-                              ⭐ Bookmarked Questions
-                              <span class="count">${bookmarkCount}</span>
-                            </div>
-                            <div class="list" style="margin-bottom:16px;">
-                              <button class="course-card" data-open-bookmarks="1" style="--course-color:#f5b800;--course-color-2:#ff6d00;">
-                                <div class="course-thumb" style="background:rgba(245,184,0,0.12);border-color:rgba(245,184,0,0.3);">⭐</div>
-                                <div class="course-body">
-                                  <div class="course-title">Review Bookmarked</div>
-                                  <div class="course-meta">${bookmarkCount} question${bookmarkCount === 1 ? "" : "s"} · tap to open list</div>
+                              ${
+                                continueExam
+                                  ? `
+                                <button class="continue-card" data-continue="${continueExam.id}">
+                                  <div class="continue-icon">${continueExam.icon || "📘"}</div>
+                                  <div class="continue-body">
+                                    <div class="continue-label">Continue</div>
+                                    <div class="continue-title">${escapeHtml(continueExam.title)}</div>
+                                    <div class="continue-meta">${Object.keys(state.progress[continueExam.id] || {}).length} / ${continueExam.questions.length} answered</div>
+                                  </div>
+                                  <svg class="course-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 18l6-6-6-6"/></svg>
+                                </button>
+                              `
+                                  : ""
+                              }
+
+                              ${
+                                bookmarkCount > 0
+                                  ? `
+                                <div class="section-title" style="margin-top:8px;">
+                                  ⭐ Bookmarked Questions
+                                  <span class="count">${bookmarkCount}</span>
                                 </div>
-                                <svg class="course-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 18l6-6-6-6"/></svg>
-                              </button>
-                            </div>
-                          `
-                              : ""
-                          }
+                                <div class="list" style="margin-bottom:16px;">
+                                  <button class="course-card" data-open-bookmarks="1" style="--course-color:#f5b800;--course-color-2:#ff6d00;">
+                                    <div class="course-thumb" style="background:rgba(245,184,0,0.12);border-color:rgba(245,184,0,0.3);">⭐</div>
+                                    <div class="course-body">
+                                      <div class="course-title">Review Bookmarked</div>
+                                      <div class="course-meta">${bookmarkCount} question${bookmarkCount === 1 ? "" : "s"} · tap to open list</div>
+                                    </div>
+                                    <svg class="course-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 18l6-6-6-6"/></svg>
+                                  </button>
+                                </div>
+                              `
+                                  : ""
+                              }
 
-                          <div class="section-title">
-                            Study Materials
-                            <span class="count">2</span>
-                          </div>
-
-                          <div class="list" style="margin-bottom:16px;">
-                            <button class="course-card" data-open-notes-quick="1" style="--course-color:#7c4dff;--course-color-2:#4d9fff;">
-                              <div class="course-thumb" style="background:rgba(124,77,255,0.12);border-color:rgba(124,77,255,0.3);">📝</div>
-                              <div class="course-body">
-                                <div class="course-title">Open Notes</div>
-                                <div class="course-meta">${NOTES_DATA.length} notes across ${[...new Set(NOTES_DATA.map((n) => n.subject))].length} subjects</div>
+                              <div class="section-title">
+                                Study Materials
+                                <span class="count">2</span>
                               </div>
-                              <svg class="course-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 18l6-6-6-6"/></svg>
-                            </button>
 
-                            <button class="course-card" data-open-ppts-quick="1" style="--course-color:#f5b800;--course-color-2:#ff6d00;">
-                              <div class="course-thumb" style="background:rgba(245,184,0,0.12);border-color:rgba(245,184,0,0.3);">📊</div>
-                              <div class="course-body">
-                              <div class="course-title">PowerPoint Slides</div>
-                              <div class="course-meta">${PPTS_DATA.length} subjects · ${PPTS_DATA.reduce(
-                                (s, sub) => {
-                                  const secs =
-                                    sub.sections ||
-                                    (sub.groups
-                                      ? sub.groups.flatMap((g) => g.sections)
-                                      : []);
-                                  return (
-                                    s +
-                                    secs.reduce(
-                                      (t, sec) => t + sec.files.length,
-                                      0,
-                                    )
-                                  );
-                                },
-                                0,
-                              )} files</div>
+                              <div class="list" style="margin-bottom:16px;">
+                                <button class="course-card" data-open-notes-quick="1" style="--course-color:#7c4dff;--course-color-2:#4d9fff;">
+                                  <div class="course-thumb" style="background:rgba(124,77,255,0.12);border-color:rgba(124,77,255,0.3);">📝</div>
+                                  <div class="course-body">
+                                    <div class="course-title">Open Notes</div>
+                                    <div class="course-meta">${NOTES_DATA.length} notes across ${[...new Set(NOTES_DATA.map((n) => n.subject))].length} subjects</div>
+                                  </div>
+                                  <svg class="course-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 18l6-6-6-6"/></svg>
+                                </button>
+
+                                <button class="course-card" data-open-ppts-quick="1" style="--course-color:#f5b800;--course-color-2:#ff6d00;">
+                                  <div class="course-thumb" style="background:rgba(245,184,0,0.12);border-color:rgba(245,184,0,0.3);">📊</div>
+                                  <div class="course-body">
+                                  <div class="course-title">PowerPoint Slides</div>
+                                  <div class="course-meta">${PPTS_DATA.length} subjects · ${PPTS_DATA.reduce(
+                                    (s, sub) => {
+                                      const secs =
+                                        sub.sections ||
+                                        (sub.groups
+                                          ? sub.groups.flatMap(
+                                              (g) => g.sections,
+                                            )
+                                          : []);
+                                      return (
+                                        s +
+                                        secs.reduce(
+                                          (t, sec) => t + sec.files.length,
+                                          0,
+                                        )
+                                      );
+                                    },
+                                    0,
+                                  )} files</div>
+                                  </div>
+                                  <svg class="course-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 18l6-6-6-6"/></svg>
+                                </button>
                               </div>
-                              <svg class="course-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 18l6-6-6-6"/></svg>
-                            </button>
-                          </div>
 
-                          <div class="section-title">
-                            Respiratory Courses
-                            <span class="count">${filtered.length}</span>
-                          </div>
+                              <div class="section-title">
+                                Respiratory Courses
+                                <span class="count">${filtered.length}</span>
+                              </div>
 
-                          ${
-                            filtered.length === 0
-                              ? `
-                            <div class="empty-state">
-                              <span class="emoji">🔍</span>
-                              <div class="title">No results</div>
-                              <div class="desc">Nothing matches "${escapeHtml(state.search)}".</div>
-                            </div>
-                          `
-                              : `<div class="list">${filtered.map(renderCourseCard).join("")}</div>`
-                          }
-                        `;
+                              ${
+                                filtered.length === 0
+                                  ? `
+                                <div class="empty-state">
+                                  <span class="emoji">🔍</span>
+                                  <div class="title">No results</div>
+                                  <div class="desc">Nothing matches "${escapeHtml(state.search)}".</div>
+                                </div>
+                              `
+                                  : `<div class="list">${filtered.map(renderCourseCard).join("")}</div>`
+                              }
+                            `;
 
         bindCourseEvents();
       }
@@ -15579,21 +15583,21 @@
         const p = getCourseProgress(subject);
         const pct = p.total ? Math.round((p.answered / p.total) * 100) : 0;
         return `
-                          <button class="course-card" data-course="${escapeHtml(subject)}" style="--course-color:${style.color};--course-color-2:${style.color2};--course-bg:${style.bg};--course-border:${style.border};">
-                            <div class="course-thumb" style="background:${style.bg};border-color:${style.border};">${style.icon}</div>
-                            <div class="course-body">
-                              <div class="course-title">${escapeHtml(subject)}</div>
-                              <div class="course-meta">
-                                ${p.examsCount} ${p.examsCount === 1 ? "exam" : "exams"}
-                                <span class="dot">·</span>
-                                ${p.total} questions
-                                ${p.answered > 0 ? `<span class="dot">·</span>${p.correct} correct` : ""}
-                              </div>
-                              ${p.answered > 0 ? `<div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div>` : ""}
-                            </div>
-                            <svg class="course-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 18l6-6-6-6"/></svg>
-                          </button>
-                        `;
+                              <button class="course-card" data-course="${escapeHtml(subject)}" style="--course-color:${style.color};--course-color-2:${style.color2};--course-bg:${style.bg};--course-border:${style.border};">
+                                <div class="course-thumb" style="background:${style.bg};border-color:${style.border};">${style.icon}</div>
+                                <div class="course-body">
+                                  <div class="course-title">${escapeHtml(subject)}</div>
+                                  <div class="course-meta">
+                                    ${p.examsCount} ${p.examsCount === 1 ? "exam" : "exams"}
+                                    <span class="dot">·</span>
+                                    ${p.total} questions
+                                    ${p.answered > 0 ? `<span class="dot">·</span>${p.correct} correct` : ""}
+                                  </div>
+                                  ${p.answered > 0 ? `<div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div>` : ""}
+                                </div>
+                                <svg class="course-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 18l6-6-6-6"/></svg>
+                              </button>
+                            `;
       }
 
       function bindCourseEvents() {
@@ -15688,8 +15692,8 @@
       }
 
       /* =====================================================================
-                         YEARS VIEW
-                         ===================================================================== */
+                             YEARS VIEW
+                             ===================================================================== */
       function renderYears() {
         const style = getCourseStyle(state.course);
         const topics = getTopicsForSubject(state.course);
@@ -15698,60 +15702,60 @@
         // show the topic chooser. Otherwise fall through to show exams for the selected topic.
         if (topics && !state.topic) {
           app.innerHTML = `
-                            <header class="topbar">
-                              <div class="logo-wrap">
-                                <button class="icon-btn" id="backToCoursesBtn" title="Back to courses" style="margin-right: 4px;">
-                                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-                                </button>
-                                <div class="logo-badge" style="background:linear-gradient(135deg, ${style.color}, ${style.color2});">RES</div>
-                                <div>
-                                  <div class="logo-text">${escapeHtml(state.course)}</div>
-                                  <div class="logo-sub">${topics.length} topics available</div>
-                                </div>
-                              </div>
-                            </header>
-
-                            <div class="crumbs">
-                              <span class="crumb link" data-crumb="courses">Courses</span>
-                              <span class="crumb-sep">›</span>
-                              <span class="crumb current">${escapeHtml(state.course)}</span>
-                            </div>
-
-                            <div class="section-title">
-                              Topics
-                              <span class="count">${topics.length}</span>
-                            </div>
-
-                            <div class="list">
-                              ${topics
-                                .map((topic) => {
-                                  const topicExams = QUIZ_DATA.filter(
-                                    (e) =>
-                                      e.subject === state.course &&
-                                      e.topic === topic,
-                                  );
-                                  const totalQ = topicExams.reduce(
-                                    (s, e) => s + e.questions.length,
-                                    0,
-                                  );
-                                  return `
-                                  <button class="course-card" data-topic="${escapeHtml(topic)}" style="--course-color:${style.color};--course-color-2:${style.color2};--course-bg:${style.bg};--course-border:${style.border};">
-                                    <div class="course-thumb" style="background:${style.bg};border-color:${style.border};">📚</div>
-                                    <div class="course-body">
-                                      <div class="course-title">${escapeHtml(topic)}</div>
-                                      <div class="course-meta">
-                                        ${topicExams.length} ${topicExams.length === 1 ? "exam" : "exams"}
-                                        <span class="dot">·</span>
-                                        ${totalQ} questions
-                                      </div>
+                                <header class="topbar">
+                                  <div class="logo-wrap">
+                                    <button class="icon-btn" id="backToCoursesBtn" title="Back to courses" style="margin-right: 4px;">
+                                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                                    </button>
+                                    <div class="logo-badge" style="background:linear-gradient(135deg, ${style.color}, ${style.color2});">RES</div>
+                                    <div>
+                                      <div class="logo-text">${escapeHtml(state.course)}</div>
+                                      <div class="logo-sub">${topics.length} topics available</div>
                                     </div>
-                                    <svg class="course-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 18l6-6-6-6"/></svg>
-                                  </button>
-                                `;
-                                })
-                                .join("")}
-                            </div>
-                          `;
+                                  </div>
+                                </header>
+
+                                <div class="crumbs">
+                                  <span class="crumb link" data-crumb="courses">Courses</span>
+                                  <span class="crumb-sep">›</span>
+                                  <span class="crumb current">${escapeHtml(state.course)}</span>
+                                </div>
+
+                                <div class="section-title">
+                                  Topics
+                                  <span class="count">${topics.length}</span>
+                                </div>
+
+                                <div class="list">
+                                  ${topics
+                                    .map((topic) => {
+                                      const topicExams = QUIZ_DATA.filter(
+                                        (e) =>
+                                          e.subject === state.course &&
+                                          e.topic === topic,
+                                      );
+                                      const totalQ = topicExams.reduce(
+                                        (s, e) => s + e.questions.length,
+                                        0,
+                                      );
+                                      return `
+                                      <button class="course-card" data-topic="${escapeHtml(topic)}" style="--course-color:${style.color};--course-color-2:${style.color2};--course-bg:${style.bg};--course-border:${style.border};">
+                                        <div class="course-thumb" style="background:${style.bg};border-color:${style.border};">📚</div>
+                                        <div class="course-body">
+                                          <div class="course-title">${escapeHtml(topic)}</div>
+                                          <div class="course-meta">
+                                            ${topicExams.length} ${topicExams.length === 1 ? "exam" : "exams"}
+                                            <span class="dot">·</span>
+                                            ${totalQ} questions
+                                          </div>
+                                        </div>
+                                        <svg class="course-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 18l6-6-6-6"/></svg>
+                                      </button>
+                                    `;
+                                    })
+                                    .join("")}
+                                </div>
+                              `;
 
           document.querySelectorAll("[data-crumb]").forEach((el) => {
             el.addEventListener("click", () => {
@@ -15788,52 +15792,52 @@
         ).sort((a, b) => b.year - a.year);
 
         app.innerHTML = `
-                          <header class="topbar">
-                            <div class="logo-wrap">
-                              <button class="icon-btn" id="backToCoursesBtn" title="Back to courses" style="margin-right: 4px;">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-                              </button>
-                              <div class="logo-badge" style="background:linear-gradient(135deg, ${style.color}, ${style.color2});">RES</div>
-                              <div>
-                                <div class="logo-text">${escapeHtml(state.course)}</div>
-                                <div class="logo-sub">${exams.length} ${exams.length === 1 ? "exam" : "exams"} available</div>
+                              <header class="topbar">
+                                <div class="logo-wrap">
+                                  <button class="icon-btn" id="backToCoursesBtn" title="Back to courses" style="margin-right: 4px;">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                                  </button>
+                                  <div class="logo-badge" style="background:linear-gradient(135deg, ${style.color}, ${style.color2});">RES</div>
+                                  <div>
+                                    <div class="logo-text">${escapeHtml(state.course)}</div>
+                                    <div class="logo-sub">${exams.length} ${exams.length === 1 ? "exam" : "exams"} available</div>
+                                  </div>
+                                </div>
+                              </header>
+
+                                        <div class="crumbs">
+                                <span class="crumb link" data-crumb="courses">Courses</span>
+                                <span class="crumb-sep">›</span>
+                                ${
+                                  state.topic
+                                    ? `<span class="crumb link" data-crumb="topics">${escapeHtml(state.course)}</span>
+                                     <span class="crumb-sep">›</span>
+                                     <span class="crumb current">${escapeHtml(state.topic)}</span>`
+                                    : `<span class="crumb current">${escapeHtml(state.course)}</span>`
+                                }
                               </div>
-                            </div>
-                          </header>
 
-                                    <div class="crumbs">
-                            <span class="crumb link" data-crumb="courses">Courses</span>
-                            <span class="crumb-sep">›</span>
-                            ${
-                              state.topic
-                                ? `<span class="crumb link" data-crumb="topics">${escapeHtml(state.course)}</span>
-                                 <span class="crumb-sep">›</span>
-                                 <span class="crumb current">${escapeHtml(state.topic)}</span>`
-                                : `<span class="crumb current">${escapeHtml(state.course)}</span>`
-                            }
-                          </div>
-
-                          <div class="section-title">
-                            Available Exams
-                            <span class="count">${exams.length}</span>
-                          </div>
-
-                          <div class="year-list">
-                            ${
-                              exams.length === 0
-                                ? `
-                              <div class="empty-state">
-                                <span class="emoji">📭</span>
-                                <div class="title">No exams for this course</div>
-                                <div class="desc">Add some exams in the QUIZ_DATA section.</div>
+                              <div class="section-title">
+                                Available Exams
+                                <span class="count">${exams.length}</span>
                               </div>
-                            `
-                                : exams
-                                    .map((e) => renderYearCard(e, style))
-                                    .join("")
-                            }
-                          </div>
-                        `;
+
+                              <div class="year-list">
+                                ${
+                                  exams.length === 0
+                                    ? `
+                                  <div class="empty-state">
+                                    <span class="emoji">📭</span>
+                                    <div class="title">No exams for this course</div>
+                                    <div class="desc">Add some exams in the QUIZ_DATA section.</div>
+                                  </div>
+                                `
+                                    : exams
+                                        .map((e) => renderYearCard(e, style))
+                                        .join("")
+                                }
+                              </div>
+                            `;
 
         document.querySelectorAll("[data-crumb]").forEach((el) => {
           el.addEventListener("click", () => {
@@ -15898,74 +15902,74 @@
         }
 
         return `
-                          <button class="year-card" data-exam="${exam.id}">
-                            <div class="badge-year" style="background:${style.bg};color:${style.color};border-color:${style.border};">
-                              ${exam.year}
-                            </div>
-                            <div class="year-body">
-                              <div class="year-title">${escapeHtml(exam.title)}</div>
-                              <div class="year-meta">
-                                ${p.answered > 0 ? `${p.answered}/${p.total} answered · ${p.correct} correct` : `${p.total} questions`}
-                              </div>
-                              ${p.answered > 0 ? `<div class="progress-bar"><div class="progress-fill" style="width:${pct}%;background:linear-gradient(90deg,${style.color},${style.color2});"></div></div>` : ""}
-                            </div>
-                            <span class="year-status ${status}">${statusLabel}</span>
-                          </button>
-                        `;
+                              <button class="year-card" data-exam="${exam.id}">
+                                <div class="badge-year" style="background:${style.bg};color:${style.color};border-color:${style.border};">
+                                  ${exam.year}
+                                </div>
+                                <div class="year-body">
+                                  <div class="year-title">${escapeHtml(exam.title)}</div>
+                                  <div class="year-meta">
+                                    ${p.answered > 0 ? `${p.answered}/${p.total} answered · ${p.correct} correct` : `${p.total} questions`}
+                                  </div>
+                                  ${p.answered > 0 ? `<div class="progress-bar"><div class="progress-fill" style="width:${pct}%;background:linear-gradient(90deg,${style.color},${style.color2});"></div></div>` : ""}
+                                </div>
+                                <span class="year-status ${status}">${statusLabel}</span>
+                              </button>
+                            `;
       }
 
       /* =====================================================================
-                         NOTES — COURSES LIST
-                         ===================================================================== */
+                             NOTES — COURSES LIST
+                             ===================================================================== */
 
       /* =====================================================================
-                         NOTES — COURSES LIST
-                         ===================================================================== */
+                             NOTES — COURSES LIST
+                             ===================================================================== */
       function renderNotesCourses() {
         app.innerHTML = `
-                          <header class="topbar">
-                            <div class="logo-wrap">
-                              <button class="icon-btn" id="backToCoursesFromNotes" title="Back" style="margin-right: 4px;">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-                              </button>
-                              <div class="logo-badge" style="background:linear-gradient(135deg,#7c4dff,#4d9fff);">📝</div>
-                              <div>
-                                <div class="logo-text">Notes</div>
-                                <div class="logo-sub">${NOTES_DATA.length} subjects available</div>
-                              </div>
-                            </div>
-                          </header>
-
-                          <div class="crumbs">
-                            <span class="crumb link" data-crumb-notes="courses">Courses</span>
-                            <span class="crumb-sep">›</span>
-                            <span class="crumb current">Notes</span>
-                          </div>
-
-                          <div class="section-title">
-                            Subjects
-                            <span class="count">${NOTES_DATA.length}</span>
-                          </div>
-
-                          <div class="list">
-                            ${NOTES_DATA.map((note) => {
-                              const style = getCourseStyle(note.subject);
-                              const fileCount = note.files.length;
-                              return `
-                                <button class="course-card" data-note-subject="${escapeHtml(note.subject)}" style="--course-color:${style.color};--course-color-2:${style.color2};--course-bg:${style.bg};--course-border:${style.border};">
-                                  <div class="course-thumb" style="background:${style.bg};border-color:${style.border};">${note.icon || style.icon}</div>
-                                  <div class="course-body">
-                                    <div class="course-title">${escapeHtml(note.subject)}</div>
-                                    <div class="course-meta">
-                                      ${fileCount} ${fileCount === 1 ? "note" : "notes"}
-                                    </div>
+                              <header class="topbar">
+                                <div class="logo-wrap">
+                                  <button class="icon-btn" id="backToCoursesFromNotes" title="Back" style="margin-right: 4px;">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                                  </button>
+                                  <div class="logo-badge" style="background:linear-gradient(135deg,#7c4dff,#4d9fff);">📝</div>
+                                  <div>
+                                    <div class="logo-text">Notes</div>
+                                    <div class="logo-sub">${NOTES_DATA.length} subjects available</div>
                                   </div>
-                                  <svg class="course-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 18l6-6-6-6"/></svg>
-                                </button>
-                              `;
-                            }).join("")}
-                          </div>
-                        `;
+                                </div>
+                              </header>
+
+                              <div class="crumbs">
+                                <span class="crumb link" data-crumb-notes="courses">Courses</span>
+                                <span class="crumb-sep">›</span>
+                                <span class="crumb current">Notes</span>
+                              </div>
+
+                              <div class="section-title">
+                                Subjects
+                                <span class="count">${NOTES_DATA.length}</span>
+                              </div>
+
+                              <div class="list">
+                                ${NOTES_DATA.map((note) => {
+                                  const style = getCourseStyle(note.subject);
+                                  const fileCount = note.files.length;
+                                  return `
+                                    <button class="course-card" data-note-subject="${escapeHtml(note.subject)}" style="--course-color:${style.color};--course-color-2:${style.color2};--course-bg:${style.bg};--course-border:${style.border};">
+                                      <div class="course-thumb" style="background:${style.bg};border-color:${style.border};">${note.icon || style.icon}</div>
+                                      <div class="course-body">
+                                        <div class="course-title">${escapeHtml(note.subject)}</div>
+                                        <div class="course-meta">
+                                          ${fileCount} ${fileCount === 1 ? "note" : "notes"}
+                                        </div>
+                                      </div>
+                                      <svg class="course-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 18l6-6-6-6"/></svg>
+                                    </button>
+                                  `;
+                                }).join("")}
+                              </div>
+                            `;
 
         const back = document.getElementById("backToCoursesFromNotes");
         if (back) {
@@ -16003,53 +16007,53 @@
         const style = getCourseStyle(noteGroup.subject);
 
         app.innerHTML = `
-                          <header class="topbar">
-                            <div class="logo-wrap">
-                              <button class="icon-btn" id="backToNotesList" title="Back" style="margin-right: 4px;">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-                              </button>
-                              <div class="logo-badge" style="background:linear-gradient(135deg,${style.color},${style.color2});">${noteGroup.icon || style.icon}</div>
-                              <div>
-                                <div class="logo-text">${escapeHtml(noteGroup.subject)}</div>
-                                <div class="logo-sub">${noteGroup.files.length} ${noteGroup.files.length === 1 ? "note" : "notes"}</div>
-                              </div>
-                            </div>
-                          </header>
-
-                          <div class="crumbs">
-                            <span class="crumb link" data-crumb-note="courses">Courses</span>
-                            <span class="crumb-sep">›</span>
-                            <span class="crumb link" data-crumb-note="notes">Notes</span>
-                            <span class="crumb-sep">›</span>
-                            <span class="crumb current">${escapeHtml(noteGroup.subject)}</span>
-                          </div>
-
-                          <div class="section-title">
-                            Available Notes
-                            <span class="count">${noteGroup.files.length}</span>
-                          </div>
-
-                          <div class="list">
-                            ${noteGroup.files
-                              .map(
-                                (f) => `
-                              <a class="course-card" href="${escapeHtml(f.file)}" target="_blank" rel="noopener" style="--course-color:${style.color};--course-color-2:${style.color2};--course-bg:${style.bg};--course-border:${style.border};text-decoration:none;color:inherit;">
-                                <div class="course-thumb" style="background:${style.bg};border-color:${style.border};">📄</div>
-                                <div class="course-body">
-                                  <div class="course-title" style="font-size:15px;">${escapeHtml(f.title)}</div>
-                                  <div class="course-meta">
-                                    <span style="color:${style.color};font-weight:700;">PDF</span>
-                                    <span class="dot">·</span>
-                                    <span>Tap to open</span>
+                              <header class="topbar">
+                                <div class="logo-wrap">
+                                  <button class="icon-btn" id="backToNotesList" title="Back" style="margin-right: 4px;">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                                  </button>
+                                  <div class="logo-badge" style="background:linear-gradient(135deg,${style.color},${style.color2});">${noteGroup.icon || style.icon}</div>
+                                  <div>
+                                    <div class="logo-text">${escapeHtml(noteGroup.subject)}</div>
+                                    <div class="logo-sub">${noteGroup.files.length} ${noteGroup.files.length === 1 ? "note" : "notes"}</div>
                                   </div>
                                 </div>
-                                <svg class="course-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 18l6-6-6-6"/></svg>
-                              </a>
-                            `,
-                              )
-                              .join("")}
-                          </div>
-                        `;
+                              </header>
+
+                              <div class="crumbs">
+                                <span class="crumb link" data-crumb-note="courses">Courses</span>
+                                <span class="crumb-sep">›</span>
+                                <span class="crumb link" data-crumb-note="notes">Notes</span>
+                                <span class="crumb-sep">›</span>
+                                <span class="crumb current">${escapeHtml(noteGroup.subject)}</span>
+                              </div>
+
+                              <div class="section-title">
+                                Available Notes
+                                <span class="count">${noteGroup.files.length}</span>
+                              </div>
+
+                              <div class="list">
+                                ${noteGroup.files
+                                  .map(
+                                    (f) => `
+                                  <a class="course-card" href="${escapeHtml(f.file)}" target="_blank" rel="noopener" style="--course-color:${style.color};--course-color-2:${style.color2};--course-bg:${style.bg};--course-border:${style.border};text-decoration:none;color:inherit;">
+                                    <div class="course-thumb" style="background:${style.bg};border-color:${style.border};">📄</div>
+                                    <div class="course-body">
+                                      <div class="course-title" style="font-size:15px;">${escapeHtml(f.title)}</div>
+                                      <div class="course-meta">
+                                        <span style="color:${style.color};font-weight:700;">PDF</span>
+                                        <span class="dot">·</span>
+                                        <span>Tap to open</span>
+                                      </div>
+                                    </div>
+                                    <svg class="course-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 18l6-6-6-6"/></svg>
+                                  </a>
+                                `,
+                                  )
+                                  .join("")}
+                              </div>
+                            `;
 
         const back = document.getElementById("backToNotesList");
         if (back)
@@ -16086,8 +16090,8 @@
       }
 
       /* =====================================================================
-                         BOOKMARKS LIST VIEW
-                         ===================================================================== */
+                             BOOKMARKS LIST VIEW
+                             ===================================================================== */
       function renderBookmarks() {
         const items = [];
         Object.entries(state.bookmarks).forEach(([examId, qs]) => {
@@ -16102,45 +16106,45 @@
         });
 
         app.innerHTML = `
-                          <header class="topbar">
-                            <div class="logo-wrap">
-                              <button class="icon-btn" id="backFromBookmarks" title="Back" style="margin-right: 4px;">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-                              </button>
-                              <div class="logo-badge" style="background:linear-gradient(135deg,#f5b800,#ff6d00);">⭐</div>
-                              <div>
-                                <div class="logo-text">Bookmarks</div>
-                                <div class="logo-sub">${items.length} ${items.length === 1 ? "question" : "questions"} saved</div>
+                              <header class="topbar">
+                                <div class="logo-wrap">
+                                  <button class="icon-btn" id="backFromBookmarks" title="Back" style="margin-right: 4px;">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                                  </button>
+                                  <div class="logo-badge" style="background:linear-gradient(135deg,#f5b800,#ff6d00);">⭐</div>
+                                  <div>
+                                    <div class="logo-text">Bookmarks</div>
+                                    <div class="logo-sub">${items.length} ${items.length === 1 ? "question" : "questions"} saved</div>
+                                  </div>
+                                </div>
+                              </header>
+
+                              <div class="crumbs">
+                                <span class="crumb link" data-crumb-bookmarks="courses">Courses</span>
+                                <span class="crumb-sep">›</span>
+                                <span class="crumb current">Bookmarks</span>
                               </div>
-                            </div>
-                          </header>
 
-                          <div class="crumbs">
-                            <span class="crumb link" data-crumb-bookmarks="courses">Courses</span>
-                            <span class="crumb-sep">›</span>
-                            <span class="crumb current">Bookmarks</span>
-                          </div>
-
-                          ${
-                            items.length === 0
-                              ? `
-                            <div class="empty-state">
-                              <span class="emoji">⭐</span>
-                              <div class="title">No bookmarks yet</div>
-                              <div class="desc">Open any exam and tap the ⭐ icon to save a question for later.</div>
-                            </div>
-                          `
-                              : `
-                            <div class="section-title">
-                              Saved Questions
-                              <span class="count">${items.length}</span>
-                            </div>
-                            <div class="list">
-                              ${items.map(renderBookmarkCard).join("")}
-                            </div>
-                          `
-                          }
-                        `;
+                              ${
+                                items.length === 0
+                                  ? `
+                                <div class="empty-state">
+                                  <span class="emoji">⭐</span>
+                                  <div class="title">No bookmarks yet</div>
+                                  <div class="desc">Open any exam and tap the ⭐ icon to save a question for later.</div>
+                                </div>
+                              `
+                                  : `
+                                <div class="section-title">
+                                  Saved Questions
+                                  <span class="count">${items.length}</span>
+                                </div>
+                                <div class="list">
+                                  ${items.map(renderBookmarkCard).join("")}
+                                </div>
+                              `
+                              }
+                            `;
 
         bindBookmarkEvents();
       }
@@ -16153,20 +16157,20 @@
             : question.q;
 
         return `
-                          <button class="course-card" data-bookmark-exam="${exam.id}" data-bookmark-q="${qIdx}" style="--course-color:${style.color};--course-color-2:${style.color2};--course-bg:${style.bg};--course-border:${style.border};">
-                            <div class="course-thumb" style="background:${style.bg};border-color:${style.border};">${style.icon}</div>
-                            <div class="course-body">
-                              <div class="course-title" style="font-size:14px;">${escapeHtml(exam.subject)} — ${escapeHtml(exam.title)}</div>
-                              <div class="course-meta" style="margin-bottom:6px;">
-                                <span style="color:${style.color};font-weight:800;">Q${qIdx + 1}</span>
-                                <span class="dot">·</span>
-                                <span>${escapeHtml(exam.topic)}</span>
-                              </div>
-                              <div style="font-size:12.5px;color:var(--text-dim);line-height:1.5;">${escapeHtml(qText)}</div>
-                            </div>
-                            <svg class="course-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 18l6-6-6-6"/></svg>
-                          </button>
-                        `;
+                              <button class="course-card" data-bookmark-exam="${exam.id}" data-bookmark-q="${qIdx}" style="--course-color:${style.color};--course-color-2:${style.color2};--course-bg:${style.bg};--course-border:${style.border};">
+                                <div class="course-thumb" style="background:${style.bg};border-color:${style.border};">${style.icon}</div>
+                                <div class="course-body">
+                                  <div class="course-title" style="font-size:14px;">${escapeHtml(exam.subject)} — ${escapeHtml(exam.title)}</div>
+                                  <div class="course-meta" style="margin-bottom:6px;">
+                                    <span style="color:${style.color};font-weight:800;">Q${qIdx + 1}</span>
+                                    <span class="dot">·</span>
+                                    <span>${escapeHtml(exam.topic)}</span>
+                                  </div>
+                                  <div style="font-size:12.5px;color:var(--text-dim);line-height:1.5;">${escapeHtml(qText)}</div>
+                                </div>
+                                <svg class="course-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 18l6-6-6-6"/></svg>
+                              </button>
+                            `;
       }
 
       function bindBookmarkEvents() {
@@ -16204,8 +16208,8 @@
       }
 
       /* =====================================================================
-                         QUIZ VIEW
-                         ===================================================================== */
+                             QUIZ VIEW
+                             ===================================================================== */
       function renderQuiz() {
         const exam = state.exam;
         const q = exam.questions[state.qIndex];
@@ -16226,11 +16230,11 @@
               else if (opt.letter === savedAnswer.chosen) cls += " wrong";
             }
             return `
-                            <button class="${cls}" data-letter="${opt.letter}">
-                              <span class="letter">${opt.letter}</span>
-                              <span>${escapeHtml(opt.text)}</span>
-                            </button>
-                          `;
+                                <button class="${cls}" data-letter="${opt.letter}">
+                                  <span class="letter">${opt.letter}</span>
+                                  <span>${escapeHtml(opt.text)}</span>
+                                </button>
+                              `;
           })
           .join("");
 
@@ -16249,83 +16253,83 @@
           Object.keys(progress).length === exam.questions.length;
 
         app.innerHTML = `
-                          <div class="quiz-header">
-                            <button class="icon-btn" id="backBtn" title="Back to years">
-                              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-                            </button>
-                            <div class="quiz-header-info">
-                              <div class="quiz-header-title">${escapeHtml(exam.title)}</div>
-                              <div class="quiz-header-count">Q${state.qIndex + 1} of ${exam.questions.length}</div>
-                            </div>
-                            <button class="icon-btn" id="bookmarkBtn" title="Bookmark this question" style="${isBookmarked(exam.id, state.qIndex) ? "background:rgba(245,184,0,0.15);border-color:rgba(245,184,0,0.5);color:#f5b800;" : ""}">
-                              <svg width="18" height="18" viewBox="0 0 24 24" fill="${isBookmarked(exam.id, state.qIndex) ? "currentColor" : "none"}" stroke="currentColor" stroke-width="2.2"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>
-                            </button>
-                            <button class="icon-btn" id="closeBtn" title="Close">
-                              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 6L6 18M6 6l12 12"/></svg>
-                            </button>
-                          </div>
-                          <div class="quiz-progress"><div class="quiz-progress-fill" style="width:${pct}%"></div></div>
-
-                          <div class="quiz-body">
-                            <div class="breadcrumb">
-                              ${escapeHtml(exam.subject.toUpperCase())}
-                              <span class="dot">·</span>
-                              ${exam.year}
-                              <span class="dot">·</span>
-                              ${escapeHtml(exam.topic.toUpperCase())}
-                            </div>
-                            <div class="quiz-title">${escapeHtml(exam.title)}</div>
-                            <div class="quiz-section">${escapeHtml(exam.section || "")}</div>
-
-                            <div class="q-tag-row">
-                              <div>
-                                <span class="q-number">Q${state.qIndex + 1}</span>
-                                <span class="q-topic">${escapeHtml(exam.topic)}</span>
-                              </div>
-                              <div class="q-meta-badges">
-                                ${state.streak > 1 ? `<span class="meta-badge streak">🔥 ${state.streak} streak</span>` : ""}
-                              </div>
-                            </div>
-
-                            <div class="q-text">${escapeHtml(q.q)}</div>
-                            <div class="options">${optionsHTML}</div>
-
-                            ${
-                              answered
-                                ? `
-                              <div class="result-row ${isCorrect ? "correct" : "wrong"}">
-                                ${isCorrect ? "✓ Correct" : "✗ Incorrect — correct answer is " + q.correct}
-                              </div>
-                              <div class="action-btns">
-                                <button class="action-btn ${state.showExplanation ? "active" : ""}" id="explBtn">
-                                  ${state.showExplanation ? "Hide Explanation" : "Show Explanation"}
+                              <div class="quiz-header">
+                                <button class="icon-btn" id="backBtn" title="Back to years">
+                                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                                </button>
+                                <div class="quiz-header-info">
+                                  <div class="quiz-header-title">${escapeHtml(exam.title)}</div>
+                                  <div class="quiz-header-count">Q${state.qIndex + 1} of ${exam.questions.length}</div>
+                                </div>
+                                <button class="icon-btn" id="bookmarkBtn" title="Bookmark this question" style="${isBookmarked(exam.id, state.qIndex) ? "background:rgba(245,184,0,0.15);border-color:rgba(245,184,0,0.5);color:#f5b800;" : ""}">
+                                  <svg width="18" height="18" viewBox="0 0 24 24" fill="${isBookmarked(exam.id, state.qIndex) ? "currentColor" : "none"}" stroke="currentColor" stroke-width="2.2"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>
+                                </button>
+                                <button class="icon-btn" id="closeBtn" title="Close">
+                                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 6L6 18M6 6l12 12"/></svg>
                                 </button>
                               </div>
-                              ${
-                                state.showExplanation
-                                  ? `
-                                <div class="explanation">
-                                  <div class="explanation-label">Explanation</div>
-                                                  <div class="explanation-text">${(q.explanation || "No explanation provided.").replace(/\n/g, "<br>")}</div>
-                              `
-                                  : ""
-                              }
-                            `
-                                : ""
-                            }
+                              <div class="quiz-progress"><div class="quiz-progress-fill" style="width:${pct}%"></div></div>
 
-                            <div class="q-nav">${qNavHTML}</div>
+                              <div class="quiz-body">
+                                <div class="breadcrumb">
+                                  ${escapeHtml(exam.subject.toUpperCase())}
+                                  <span class="dot">·</span>
+                                  ${exam.year}
+                                  <span class="dot">·</span>
+                                  ${escapeHtml(exam.topic.toUpperCase())}
+                                </div>
+                                <div class="quiz-title">${escapeHtml(exam.title)}</div>
+                                <div class="quiz-section">${escapeHtml(exam.section || "")}</div>
 
-                            <div class="nav-buttons">
-                              <button class="nav-btn" id="prevBtn" ${state.qIndex === 0 ? "disabled" : ""}>← Previous</button>
-                              ${
-                                state.qIndex === exam.questions.length - 1
-                                  ? `<button class="nav-btn primary" id="finishBtn">${allAnswered ? "See Results →" : "Next →"}</button>`
-                                  : `<button class="nav-btn primary" id="nextBtn">Next →</button>`
-                              }
-                            </div>
-                          </div>
-                        `;
+                                <div class="q-tag-row">
+                                  <div>
+                                    <span class="q-number">Q${state.qIndex + 1}</span>
+                                    <span class="q-topic">${escapeHtml(exam.topic)}</span>
+                                  </div>
+                                  <div class="q-meta-badges">
+                                    ${state.streak > 1 ? `<span class="meta-badge streak">🔥 ${state.streak} streak</span>` : ""}
+                                  </div>
+                                </div>
+
+                                <div class="q-text">${escapeHtml(q.q)}</div>
+                                <div class="options">${optionsHTML}</div>
+
+                                ${
+                                  answered
+                                    ? `
+                                  <div class="result-row ${isCorrect ? "correct" : "wrong"}">
+                                    ${isCorrect ? "✓ Correct" : "✗ Incorrect — correct answer is " + q.correct}
+                                  </div>
+                                  <div class="action-btns">
+                                    <button class="action-btn ${state.showExplanation ? "active" : ""}" id="explBtn">
+                                      ${state.showExplanation ? "Hide Explanation" : "Show Explanation"}
+                                    </button>
+                                  </div>
+                                  ${
+                                    state.showExplanation
+                                      ? `
+                                    <div class="explanation">
+                                      <div class="explanation-label">Explanation</div>
+                                                      <div class="explanation-text">${(q.explanation || "No explanation provided.").replace(/\n/g, "<br>")}</div>
+                                  `
+                                      : ""
+                                  }
+                                `
+                                    : ""
+                                }
+
+                                <div class="q-nav">${qNavHTML}</div>
+
+                                <div class="nav-buttons">
+                                  <button class="nav-btn" id="prevBtn" ${state.qIndex === 0 ? "disabled" : ""}>← Previous</button>
+                                  ${
+                                    state.qIndex === exam.questions.length - 1
+                                      ? `<button class="nav-btn primary" id="finishBtn">${allAnswered ? "See Results →" : "Next →"}</button>`
+                                      : `<button class="nav-btn primary" id="nextBtn">Next →</button>`
+                                  }
+                                </div>
+                              </div>
+                            `;
 
         bindQuizEvents();
       }
@@ -16438,8 +16442,8 @@
       }
 
       /* =====================================================================
-                         FINISH VIEW
-                         ===================================================================== */
+                             FINISH VIEW
+                             ===================================================================== */
       function renderFinish() {
         const exam = state.exam;
         const p = getExamProgress(exam);
@@ -16476,29 +16480,29 @@
         }
 
         app.innerHTML = `
-                          <header class="topbar">
-                            <div class="logo-wrap">
-                              <div class="logo-badge">RES</div>
-                              <div>
-                                <div class="logo-text">Results</div>
-                                <div class="logo-sub">${escapeHtml(exam.title)}</div>
-                              </div>
-                            </div>
-                          </header>
+                              <header class="topbar">
+                                <div class="logo-wrap">
+                                  <div class="logo-badge">RES</div>
+                                  <div>
+                                    <div class="logo-text">Results</div>
+                                    <div class="logo-sub">${escapeHtml(exam.title)}</div>
+                                  </div>
+                                </div>
+                              </header>
 
-                          <div class="finish-card">
-                            <span class="finish-emoji">${emoji}</span>
-                            <div class="finish-title">${title}</div>
-                            <div class="finish-sub">${sub}</div>
-                            <div class="finish-score">${pct}%</div>
-                            <div class="finish-score-label">${p.correct} of ${p.total} correct · ${mins}m ${secs}s</div>
-                            <div class="finish-btns">
-                              <button class="nav-btn" id="reviewBtn" style="flex:0;padding:14px 22px;">Review</button>
-                              <button class="nav-btn" id="backToYearsBtn" style="flex:0;padding:14px 22px;">Back to Years</button>
-                              <button class="nav-btn primary" id="retryBtn" style="flex:0;padding:14px 22px;">Retry</button>
-                            </div>
-                          </div>
-                        `;
+                              <div class="finish-card">
+                                <span class="finish-emoji">${emoji}</span>
+                                <div class="finish-title">${title}</div>
+                                <div class="finish-sub">${sub}</div>
+                                <div class="finish-score">${pct}%</div>
+                                <div class="finish-score-label">${p.correct} of ${p.total} correct · ${mins}m ${secs}s</div>
+                                <div class="finish-btns">
+                                  <button class="nav-btn" id="reviewBtn" style="flex:0;padding:14px 22px;">Review</button>
+                                  <button class="nav-btn" id="backToYearsBtn" style="flex:0;padding:14px 22px;">Back to Years</button>
+                                  <button class="nav-btn primary" id="retryBtn" style="flex:0;padding:14px 22px;">Retry</button>
+                                </div>
+                              </div>
+                            `;
 
         document.getElementById("reviewBtn").addEventListener("click", () => {
           state.qIndex = 0;
@@ -16531,8 +16535,8 @@
       }
 
       /* =====================================================================
-                         KEYBOARD SHORTCUTS
-                         ===================================================================== */
+                             KEYBOARD SHORTCUTS
+                             ===================================================================== */
       document.addEventListener("keydown", (e) => {
         if (state.view === "quiz") {
           if (
@@ -16576,8 +16580,8 @@
       });
 
       /* =====================================================================
-                         BOOT
-      ===================================================================== */
+                             BOOT
+          ===================================================================== */
       render();
     </script>
   </body>
