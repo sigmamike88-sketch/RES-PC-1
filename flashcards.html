@@ -3,334 +3,334 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CVS Flashcards</title>
+    <title>Respira Flashcards</title>
     <link
       rel="icon"
-      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🃏</text></svg>"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🫁</text></svg>"
     />
+    "
     <style>
-            :root {
-              --bg: #0a0e14;
-              --card: #121821;
-              --border: #1f2836;
-              --text: #e6edf3;
-              --text-dim: #8b949e;
-              --accent: #e91e63;
-              --accent-2: #7c4dff;
-              /* Subject Colors */
-              --anatomy: #e91e63;
-              --physiology: #ff9800;
-              --pathology: #3f51b5;
-              --pharmacology: #9c27b0;
-              --microbiology: #ffc107;
-              --biochemistry: #4caf50;
-            }
-            * {
-              box-sizing: border-box;
-              margin: 0;
-              padding: 0;
-              -webkit-tap-highlight-color: transparent;
-            }
-            body {
-              font-family:
-                -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-              background: var(--bg);
-              color: var(--text);
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              min-height: 100vh;
-              padding: 20px;
-            }
-            .header {
-              width: 100%;
-              max-width: 600px;
-              margin-bottom: 20px;
-            }
-            .back-btn {
-          display: inline-flex;
-          align-items: center;
-          gap: 8px;
-          padding: 8px 16px;
-          background: var(--card);
-          border: 1px solid var(--border);
-          border-radius: 10px;
-          color: var(--text-dim);
-          text-decoration: none;
-          font-size: 13px;
-          font-weight: 700;
-          transition: all 0.2s ease;
-          margin-bottom: 15px;
+      :root {
+        --bg: #0a0e14;
+        --card: #121821;
+        --border: #1f2836;
+        --text: #e6edf3;
+        --text-dim: #8b949e;
+        --accent: #e91e63;
+        --accent-2: #7c4dff;
+        /* Subject Colors */
+        --anatomy: #e91e63;
+        --physiology: #ff9800;
+        --pathology: #3f51b5;
+        --pharmacology: #9c27b0;
+        --microbiology: #ffc107;
+        --biochemistry: #4caf50;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        -webkit-tap-highlight-color: transparent;
+      }
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
+        padding: 20px;
+      }
+      .header {
+        width: 100%;
+        max-width: 600px;
+        margin-bottom: 20px;
+      }
+      .back-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 16px;
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        color: var(--text-dim);
+        text-decoration: none;
+        font-size: 13px;
+        font-weight: 700;
+        transition: all 0.2s ease;
+        margin-bottom: 15px;
       }
       .back-btn:hover {
-          color: #fff;
-          border-color: var(--accent);
-          background: #1a2130;
-          transform: translateX(-3px);
-          box-shadow: 0 4px 12px rgba(233, 30, 99, 0.15);
+        color: #fff;
+        border-color: var(--accent);
+        background: #1a2130;
+        transform: translateX(-3px);
+        box-shadow: 0 4px 12px rgba(233, 30, 99, 0.15);
       }
       .back-btn svg {
-          transition: transform 0.2s ease;
+        transition: transform 0.2s ease;
       }
       .back-btn:hover svg {
-          transform: translateX(-2px);
+        transform: translateX(-2px);
       }
-            }
-            h1 {
-              font-size: 24px;
-              font-weight: 800;
-              margin-top: 10px;
-            }
+      h1 {
+        font-size: 24px;
+        font-weight: 800;
+        margin-top: 10px;
+      }
 
-            /* Flashcard Area */
-            .flashcard-container {
-              width: 100%;
-              max-width: 600px;
-              height: 350px;
-              perspective: 1000px;
-              margin-bottom: 20px;
-            }
-            .flashcard {
-              width: 100%;
-              height: 100%;
-              position: relative;
-              transform-style: preserve-3d;
-              transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
-              cursor: pointer;
-            }
-            .flashcard.is-flipped {
-              transform: rotateY(180deg);
-            }
-            .flashcard-face {
-              position: absolute;
-              width: 100%;
-              height: 100%;
-              backface-visibility: hidden;
-              background: var(--card);
-              border: 1px solid var(--border);
-              border-radius: 16px;
-              display: flex;
-              flex-direction: column;
-              justify-content: center;
-              align-items: center;
-              padding: 30px;
-              text-align: center;
-              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            }
-            /* Top gradient bar */
-            .flashcard-face::before {
-              content: "";
-              position: absolute;
-              top: 0;
-              left: 0;
-              right: 0;
-              height: 4px;
-              background: linear-gradient(90deg, var(--accent), var(--accent-2));
-              border-radius: 16px 16px 0 0;
-            }
-            .flashcard-face.back {
-              transform: rotateY(180deg);
-              background: linear-gradient(
-                135deg,
-                rgba(233, 30, 99, 0.05),
-                rgba(124, 77, 255, 0.05)
-              );
-            }
+      /* Flashcard Area */
+      .flashcard-container {
+        width: 100%;
+        max-width: 600px;
+        height: 350px;
+        perspective: 1000px;
+        margin-bottom: 20px;
+      }
+      .flashcard {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        transform-style: preserve-3d;
+        transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+        cursor: pointer;
+      }
+      .flashcard.is-flipped {
+        transform: rotateY(180deg);
+      }
+      .flashcard-face {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 30px;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      }
+      /* Top gradient bar */
+      .flashcard-face::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, var(--accent), var(--accent-2));
+        border-radius: 16px 16px 0 0;
+      }
+      .flashcard-face.back {
+        transform: rotateY(180deg);
+        background: linear-gradient(
+          135deg,
+          rgba(233, 30, 99, 0.05),
+          rgba(124, 77, 255, 0.05)
+        );
+      }
 
-            .subject-badge {
-              position: absolute;
-              top: 20px;
-              left: 50%;
-              transform: translateX(-50%);
-              font-size: 11px;
-              font-weight: 800;
-              letter-spacing: 1px;
-              text-transform: uppercase;
-              padding: 4px 12px;
-              border-radius: 20px;
-              border: 1px solid currentColor;
-            }
-            .card-label {
-              position: absolute;
-              top: 55px;
-              left: 50%;
-              transform: translateX(-50%);
-              font-size: 10px;
-              font-weight: 800;
-              color: var(--text-dim);
-              text-transform: uppercase;
-              letter-spacing: 1px;
-            }
-            .card-content {
-              font-size: 20px;
-              line-height: 1.6;
-              font-weight: 600;
-              margin-top: 20px;
-            }
-            .back .card-content {
-              font-size: 18px;
-              font-weight: 500;
-              color: #c9d1d9;
-            }
+      .subject-badge {
+        position: absolute;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        padding: 4px 12px;
+        border-radius: 20px;
+        border: 1px solid currentColor;
+      }
+      .card-label {
+        position: absolute;
+        top: 55px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 10px;
+        font-weight: 800;
+        color: var(--text-dim);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+      .card-content {
+        font-size: 20px;
+        line-height: 1.6;
+        font-weight: 600;
+        margin-top: 20px;
+      }
+      .back .card-content {
+        font-size: 18px;
+        font-weight: 500;
+        color: #c9d1d9;
+      }
 
-            /* Controls */
-            .controls {
-              display: flex;
-              gap: 12px;
-              align-items: center;
-              margin-top: 10px;
-            }
-            button {
-              font-family: inherit;
-              cursor: pointer;
-              border: 1px solid var(--border);
-              background: var(--card);
-              color: var(--text);
-              padding: 12px 24px;
-              border-radius: 12px;
-              font-size: 14px;
-              font-weight: 700;
-              transition: all 0.2s;
-            }
-            button:hover:not(:disabled) {
-              border-color: var(--accent);
-              background: #1a2130;
-            }
-            button:disabled {
-              opacity: 0.3;
-              cursor: not-allowed;
-            }
-            button.primary {
-              background: linear-gradient(135deg, var(--accent), var(--accent-2));
-              border-color: transparent;
-              color: #fff;
-              box-shadow: 0 4px 14px rgba(233, 30, 99, 0.3);
-            }
-            button.primary:hover:not(:disabled) {
-              box-shadow: 0 6px 20px rgba(233, 30, 99, 0.4);
-              transform: translateY(-1px);
-            }
-            .counter {
-              font-size: 13px;
-              font-weight: 700;
-              color: var(--text-dim);
-              min-width: 60px;
-              text-align: center;
-            }
-            .hint {
-              margin-top: 15px;
-              font-size: 12px;
-              color: var(--text-dim);
-              text-align: center;
-            }
+      /* Controls */
+      .controls {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        margin-top: 10px;
+      }
+      button {
+        font-family: inherit;
+        cursor: pointer;
+        border: 1px solid var(--border);
+        background: var(--card);
+        color: var(--text);
+        padding: 12px 24px;
+        border-radius: 12px;
+        font-size: 14px;
+        font-weight: 700;
+        transition: all 0.2s;
+      }
+      button:hover:not(:disabled) {
+        border-color: var(--accent);
+        background: #1a2130;
+      }
+      button:disabled {
+        opacity: 0.3;
+        cursor: not-allowed;
+      }
+      button.primary {
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        border-color: transparent;
+        color: #fff;
+        box-shadow: 0 4px 14px rgba(233, 30, 99, 0.3);
+      }
+      button.primary:hover:not(:disabled) {
+        box-shadow: 0 6px 20px rgba(233, 30, 99, 0.4);
+        transform: translateY(-1px);
+      }
+      .counter {
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--text-dim);
+        min-width: 60px;
+        text-align: center;
+      }
+      .hint {
+        margin-top: 15px;
+        font-size: 12px;
+        color: var(--text-dim);
+        text-align: center;
+      }
 
-            /* Jump to Question Section */
-            .jump-section {
-              width: 100%;
-              max-width: 600px;
-              margin-top: 20px;
-            }
-            .jump-header {
-              display: flex;
-              justify-content: space-between;
-              align-items: center;
-              margin-bottom: 10px;
-            }
-            .jump-title {
-              font-size: 11px;
-              font-weight: 800;
-              color: var(--text-dim);
-              text-transform: uppercase;
-              letter-spacing: 1px;
-            }
-            .jump-counter {
-              font-size: 11px;
-              font-weight: 800;
-              color: var(--text-dim);
-              background: var(--card);
-              padding: 2px 8px;
-              border-radius: 10px;
-              border: 1px solid var(--border);
-            }
+      /* Jump to Question Section */
+      .jump-section {
+        width: 100%;
+        max-width: 600px;
+        margin-top: 20px;
+      }
+      .jump-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+      .jump-title {
+        font-size: 11px;
+        font-weight: 800;
+        color: var(--text-dim);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+      .jump-counter {
+        font-size: 11px;
+        font-weight: 800;
+        color: var(--text-dim);
+        background: var(--card);
+        padding: 2px 8px;
+        border-radius: 10px;
+        border: 1px solid var(--border);
+      }
 
-            .jump-grid {
-              display: flex;
-              flex-wrap: wrap;
-              gap: 6px;
-              max-height: 150px;
-              overflow-y: auto;
-              padding-right: 5px;
-              scrollbar-width: thin;
-              scrollbar-color: var(--border) var(--bg);
-            }
-            .jump-grid::-webkit-scrollbar {
-              width: 6px;
-            }
-            .jump-grid::-webkit-scrollbar-thumb {
-              background-color: var(--border);
-              border-radius: 10px;
-            }
+      .jump-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        max-height: 150px;
+        overflow-y: auto;
+        padding-right: 5px;
+        scrollbar-width: thin;
+        scrollbar-color: var(--border) var(--bg);
+      }
+      .jump-grid::-webkit-scrollbar {
+        width: 6px;
+      }
+      .jump-grid::-webkit-scrollbar-thumb {
+        background-color: var(--border);
+        border-radius: 10px;
+      }
 
-            .jump-btn {
-              width: 32px;
-              height: 32px;
-              border-radius: 8px;
-              border: 1px solid var(--border);
-              background: var(--card);
-              color: var(--text-dim);
-              font-size: 11px;
-              font-weight: 700;
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              cursor: pointer;
-              transition: all 0.2s;
-              padding: 0;
-            }
-            .jump-btn:hover {
-              border-color: var(--accent);
-              color: var(--text);
-            }
-            .jump-btn.active {
-              background: linear-gradient(135deg, var(--accent), var(--accent-2));
-              border-color: transparent;
-              color: #fff;
-              box-shadow: 0 2px 8px rgba(233, 30, 99, 0.4);
-            }
+      .jump-btn {
+        width: 32px;
+        height: 32px;
+        border-radius: 8px;
+        border: 1px solid var(--border);
+        background: var(--card);
+        color: var(--text-dim);
+        font-size: 11px;
+        font-weight: 700;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        transition: all 0.2s;
+        padding: 0;
+      }
+      .jump-btn:hover {
+        border-color: var(--accent);
+        color: var(--text);
+      }
+      .jump-btn.active {
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        border-color: transparent;
+        color: #fff;
+        box-shadow: 0 2px 8px rgba(233, 30, 99, 0.4);
+      }
 
-            /* Legend */
-            .legend {
-              width: 100%;
-              max-width: 600px;
-              margin-top: 20px;
-              padding: 12px;
-              background: var(--card);
-              border: 1px solid var(--border);
-              border-radius: 12px;
-              display: flex;
-              flex-wrap: wrap;
-              gap: 12px;
-              justify-content: center;
-            }
-            .legend-item {
-              display: flex;
-              align-items: center;
-              gap: 6px;
-              font-size: 11px;
-              font-weight: 600;
-              color: var(--text-dim);
-            }
-            .legend-dot {
-              width: 8px;
-              height: 8px;
-              border-radius: 50%;
-            }
+      /* Legend */
+      .legend {
+        width: 100%;
+        max-width: 600px;
+        margin-top: 20px;
+        padding: 12px;
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        justify-content: center;
+      }
+      .legend-item {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 11px;
+        font-weight: 600;
+        color: var(--text-dim);
+      }
+      .legend-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+      }
     </style>
   </head>
   <body>
     <div class="header">
       <a href="index.html" class="back-btn">← Back to Main Page</a>
-      <h1>CVS Flashcards</h1>
+      <h1>Respira Flashcards</h1>
     </div>
 
     <div class="flashcard-container">
